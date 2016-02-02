@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html ng-app="store">
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="application.css" rel="stylesheet" />
+ </head>
+<body>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+    <script type="text/javascript" src="products.js"></script>
+    <h1>{{"Hello, Angular!"}}</h1>
+    <div ng-controller="StoreController as store">
+        <div class="list-group-item" ng-hide="store.product.soldOut" ng-repeat="product in store.products">
+            <h3>
+                {{product.name}}
+                <em class="pull-right">
+                    {{product.price|currency}}
+                </em>
+                </h3>
+               
+            <div class="img-thumbnail">
+<image ng-src="{{product.image}}"></image>
+            </div>
+            <hr />
+            <button ng-show="product.canPurchase">Add to Cart</button>
+            <product-tabs></product-tabs>
+        </div>
+    </div>
+</body>
+</html>
